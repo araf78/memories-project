@@ -7,6 +7,7 @@ export const getPosts = () => async (dispatch) => {
         // const response = await api.fetchPosts();
         // basically data represents the post
         const { data } = await api.fetchPosts();
+        console.log(data);
     
         dispatch({ type: 'FETCH_ALL', payload: data});
         // return action = dispatch(action);
