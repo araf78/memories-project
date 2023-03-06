@@ -7,7 +7,6 @@ export const getPosts = () => async (dispatch) => {
         // const response = await api.fetchPosts();
         // basically data represents the post
         const { data } = await api.fetchPosts();
-        console.log(data);
     
         dispatch({ type: 'FETCH_ALL', payload: data});
         // return action = dispatch(action);
@@ -22,6 +21,16 @@ export const createPost = (post) => async (dispatch) => {
         const { data } = await api.createPost(post);
 
         dispatch({ type: 'CREATE', payload: { data } });
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+export const updatePost = ({ id, post }) => async (dispatch) => {
+    try {
+        const { data } = await api.updatePost(id, post);
+
+        dispatch({ type: 'UPDATE', payload: { data } });
     } catch (error) {
         console.log(error.message);
     }

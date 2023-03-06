@@ -6,13 +6,15 @@ export default  ( posts = [], action) => {
     // }
     // so many condition we must create but it is critical so we use switch case 
     switch (action.type) {
+        case 'UPDATE':
+            return posts.map(post => post._id == action.payload._id ? action.payload : post);
         case 'FETCH_ALL' :
             // action.payload is actual posts , act.pay.. = data -> posts
-            return action.playload;     
+            return action.payload;     
         case 'CREATE':
             // ... posts = before all posts
             // action.playload = newPost
-            return [... posts, action.payload];
+            return [...posts, action.payload];
         default:
             return posts;
     }
