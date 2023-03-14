@@ -6,7 +6,10 @@ export default  ( posts = [], action) => {
     // }
     // so many condition we must create but it is critical so we use switch case 
     switch (action.type) {
+        case 'DELETE':
+            return posts.filter(post => post._id !== action.payload);
         case 'UPDATE':
+        case 'LIKE':
             return posts.map(post => post._id == action.payload._id ? action.payload : post);
         case 'FETCH_ALL' :
             // action.payload is actual posts , act.pay.. = data -> posts
